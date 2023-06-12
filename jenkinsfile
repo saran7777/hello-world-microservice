@@ -1,0 +1,13 @@
+pipeline {
+    agent any
+    parameters {
+        string(name: 'GIT_URL', defaultValue: 'https://github.com/your-github-url/hello-world-microservice.git', description: 'URL of the Git repository')
+    }
+    stages {
+        stage('Checkout') {
+            steps {
+                git url: params.GIT_URL
+            }
+        }
+    }
+}
