@@ -12,7 +12,7 @@ pipeline {
                         branches: [[name: '*/main']],
                         userRemoteConfigs: [[
                             url: params.GIT_URL,
-                            credentialsId: 'github-credentials'
+                            credentialsId: 'git-jenkins-pat'
                         ]]
                     ])
                 }
