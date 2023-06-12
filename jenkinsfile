@@ -1,23 +1,15 @@
 pipeline {
     agent any
     parameters {
-        string(name: 'GIT_URL', defaultValue: 'https://github.com/your-github-url/hello-world-microservice.git', description: 'URL of the Git repository')
+        string(name: 'GIT_URL', defaultValue: 'https://github.com/saran7777/hello-world-microservice.git', description: 'URL of the Git repository')
     }
     stages {
         stage('Checkout') {
             steps {
-                script {
-                    checkout([
-                        $class: 'GitSCM',
-                        branches: [[name: '*/main']],
-                        userRemoteConfigs: [[
-                            url: params.GIT_URL,
-                            credentialsId: 'git-jenkins-pat'
-                        ]]
-                    ])
-                }
+                git credentialsId: 'git-jenkins-pat', url: "${params.GIT_URL}"
             }
         }
-        // More stages here...
+        ...
     }
+    ...
 }
