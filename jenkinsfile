@@ -1,15 +1,5 @@
-pipeline {
-    agent any
-    parameters {
-        string(name: 'GIT_URL', defaultValue: 'https://github.com/saran7777/hello-world-microservice.git', description: 'URL of the Git repository')
+stage('Checkout') {
+    steps {
+        git branch: 'main', url: "${params.GIT_URL}", credentialsId: 'git-jenkins-pat'
     }
-    stages {
-        stage('Checkout') {
-            steps {
-                git credentialsId: 'git-jenkins-pat', url: "${params.GIT_URL}"
-            }
-        }
-        ...
-    }
-    ...
 }
